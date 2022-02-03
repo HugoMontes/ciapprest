@@ -10,9 +10,9 @@ class UserModel extends Model
     protected $useAutoIncrement = true;
 
     protected $returnType     = 'array';
-    protected $useSoftDeletes = true;
+    protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['name', 'email', 'password', 'id_rol'];
+    protected $allowedFields = ['username', 'email', 'password', 'id_rol'];
 
     protected $useTimestamps = false;
     protected $createdField  = 'created_at';
@@ -23,12 +23,10 @@ class UserModel extends Model
     protected $validationMessages = [];
     protected $skipValidation     = false;
 
-    public function get($id = null){
-        if($id === null){
-            return $this->findAll();
-        }
+    public function getAll(){
         return $this->asArray()
-            ->where(['id'=>$id])
+            ->select('users.id, users.name, users.email, roles.name as role')
+            ->join('roles', 'roles.id = users.id_rol')
             ->first();
     }
 }

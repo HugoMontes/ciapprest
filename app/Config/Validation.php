@@ -40,4 +40,18 @@ class Validation
     //--------------------------------------------------------------------
     // Rules
     //--------------------------------------------------------------------
+    public $user_create = [
+        'username' => 'required|min_length[3]|max_length[255]',
+        'password' => 'required|min_length[5]|max_length[255]',
+        'email' => 'required|min_length[5]|max_length[255]|is_unique[users.email]',
+    ];
+
+    public $user_update = [
+        'username' => 'required|min_length[3]|max_length[255]',
+        'email' => 'required|min_length[5]|max_length[255]',
+    ];
+
+    public $role = [
+        'name' => 'required|min_length[3]|max_length[255]',
+    ];
 }
