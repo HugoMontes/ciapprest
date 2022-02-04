@@ -6,6 +6,9 @@ use App\Models\UserModel;
 use App\Models\RoleModel;
 use CodeIgniter\RESTful\ResourceController;
 
+header('Access-Control-Allow-Origin: *');
+
+
 class User extends ResourceController {
 
     protected $modelName = 'App\Models\UserModel';
