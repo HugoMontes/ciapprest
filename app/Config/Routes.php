@@ -34,6 +34,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 
 $routes->resource('user', ['controller' => 'User']);
+$routes->resource('role', ['controller' => 'Role']);
+
 
 /*
  * --------------------------------------------------------------------

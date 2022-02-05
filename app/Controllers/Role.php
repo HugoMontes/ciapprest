@@ -2,16 +2,15 @@
 
 namespace App\Controllers;
 
-use App\Models\UserModel;
 use App\Models\RoleModel;
 use CodeIgniter\RESTful\ResourceController;
 
 header('Access-Control-Allow-Origin: *');
 
 
-class User extends ResourceController {
+class Role extends ResourceController {
 
-    protected $modelName = 'App\Models\UserModel';
+    protected $modelName = 'App\Models\RoleModel';
     protected $format    = 'json';
 
     public function index() {
@@ -20,29 +19,19 @@ class User extends ResourceController {
     }
 
     public function show($id = null) {
-        $user = $this->model->find($id);
-        if(!$user){
+        $role = $this->model->find($id);
+        if(!$role){
             return $this->genericResponse(null, "Registro inexistente", "No existe el registro $id", 404);
         }
-        return $this->genericResponse($user, "Se ha encontrado el registro", null, 200);
+        return $this->genericResponse($role, "Se ha encontrado el registro", null, 200);
     }
 
     public function create(){
-        $user = new UserModel();
         $role = new RoleModel();
 
-        if($this->validate('user_create')){
-            if(!$this->request->getPost('id_rol')){
-                return $this->genericResponse(null, "Error de validación", array('id_rol' => 'Rol es requerido'), 400);
-            }
-            if(!$role->get($this->request->getPost('id_rol'))){
-                return $this->genericResponse(null, "Registro inexistente", array('id_rol' => 'Rol no existe'), 404);
-            }
-            $id = $user->insert([
-                'username' => $this->request->getPost('username'),
-                'password' => MD5($this->request->getPost('password')),
-                'email' => $this->request->getPost('email'),
-                'id_rol' => $this->request->getPost('id_rol'),
+        if($this->validate('role')){
+            $id = $role->insert([
+                'name' => $this->request->getPost('name'),
             ]);
             return $this->genericResponse($this->model->find($id), "Registro adicionado correctamente", null, 200);
         }
@@ -51,27 +40,13 @@ class User extends ResourceController {
     }
 
     public function update($id = null){
-        $user = new UserModel();
         $role = new RoleModel();
-
-        if(!$this->model->find($id)){
-            return $this->genericResponse(null, "Registro inexistente", "User no existe", 404);
-        }
 
         $data = $this->request->getRawInput();
 
-        if($this->validate('user_update')){
-            if(!isset($data['id_rol'])){
-                return $this->genericResponse(null, "Error de validación", array('id_rol' => 'Rol es requerido'), 400);
-            }
-            if(!$role->get($data['id_rol'])){
-                return $this->genericResponse(null, "Registro inexistente", array('id_rol' => 'Rol no existe'), 404);
-            }
-
-            $user->update($id, [
-                'username' => $data['username'],
-                'email' => $data['email'],
-                'id_rol' => $data['id_rol']
+        if($this->validate('role')){
+            $role->update($id, [
+                'name' => $data['name'],
             ]);
             return $this->genericResponse($this->model->find($id), "Registro $id editado correctamente", null,200);
         }
@@ -81,7 +56,7 @@ class User extends ResourceController {
 
     public function delete($id = null) {
         if(!$this->model->find($id)){
-            return $this->genericResponse(null, "Registro inexistente", "User no existe", 404);
+            return $this->genericResponse(null, "Registro inexistente", "Role no existe", 404);
         }
         $this->model->delete($id);
         return $this->genericResponse(null, "Registro $id eliminado correctamente", null, 200);

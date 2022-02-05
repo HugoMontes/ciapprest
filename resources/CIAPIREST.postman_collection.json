@@ -6,9 +6,173 @@
 	},
 	"item": [
 		{
+			"name": "ROLE - BUSCAR",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/role/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"role",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ROLE - EDITAR",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "SUPERVISOR",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/role/3",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"role",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ROLE - ELIMINAR",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost/role/3",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"role",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ROLE - GUARDAR",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "CONSULTOR",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/role",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"role"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ROLE - LISTAR",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/role",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"role"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "USUARIO - BUSCAR",
 			"request": {
 				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost/user/5",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"user",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USUARIO - EDITAR",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "usuario200",
+							"type": "default"
+						},
+						{
+							"key": "email",
+							"value": "usuario200@gmail.com",
+							"type": "default"
+						},
+						{
+							"key": "id_rol",
+							"value": "2",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost/user/5",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"user",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USUARIO - ELIMINAR",
+			"request": {
+				"method": "DELETE",
 				"header": [],
 				"url": {
 					"raw": "localhost/user/5",
@@ -77,62 +241,6 @@
 					],
 					"path": [
 						"user"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "USUARIO - EDITAR",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "username",
-							"value": "usuario200",
-							"type": "default"
-						},
-						{
-							"key": "email",
-							"value": "usuario200@gmail.com",
-							"type": "default"
-						},
-						{
-							"key": "id_rol",
-							"value": "2",
-							"type": "default"
-						}
-					]
-				},
-				"url": {
-					"raw": "localhost/user/5",
-					"host": [
-						"localhost"
-					],
-					"path": [
-						"user",
-						"5"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "USUARIO - ELIMINAR",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost/user/5",
-					"host": [
-						"localhost"
-					],
-					"path": [
-						"user",
-						"5"
 					]
 				}
 			},
